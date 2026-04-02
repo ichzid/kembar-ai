@@ -1,4 +1,4 @@
-<header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+<header class="bg-white sticky top-0 z-30">
     <div class="h-[73px] flex items-center justify-between px-4 md:px-8">
         <!-- Mobile Menu Button -->
         <button id="menuBtn" class="md:hidden text-gray-600 hover:text-gray-900">
@@ -7,16 +7,22 @@
             </svg>
         </button>
         
-        <!-- Page Title -->
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900">
-            {{-- @yield('title', 'Dashboard') --}}
-        </h2>
+        <div class="flex-1"></div>
+        
+        <!-- Quick Actions & User Profile -->
+        <div class="flex items-center space-x-4 relative">
+            
+            <button class="text-gray-400 hover:text-gray-600 focus:outline-none transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                </svg>
+            </button>
+            
+            <div class="h-8 w-px bg-gray-200"></div>
 
-        <!-- User Profile with Dropdown -->
-        <div class="flex items-center space-x-3 relative">
-            <div class="hidden md:block text-right">
-                <p class="text-sm font-semibold text-gray-900">{{ Auth::user()->name }}</p>
-                <p class="text-xs text-gray-500">{{ Auth::user()->email }}</p>
+            <div class="hidden md:flex flex-col items-end">
+                <p class="text-sm font-semibold text-gray-900 leading-tight">{{ Auth::user()->name }}</p>
+                <p class="text-[11px] text-gray-500">{{ Auth::user()->email }}</p>
             </div>
             
             <!-- Profile Trigger -->

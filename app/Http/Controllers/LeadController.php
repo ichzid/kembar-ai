@@ -10,9 +10,20 @@ class LeadController extends Controller
 {
     public function index(Request $request)
     {
+        $perPage = $request->query('per_page', 10);
+        $search = $request->query('search');
         $leads = Lead::whereHas('persona', function ($query) {
             $query->where('user_id', Auth::id());
-        })->latest('last_interaction_at')->paginate(10);
+        })
+        ->when($search, function ($query, $search) {
+            return $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('phone', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('address', 'like', "%{$search}%");
+            });
+        })
+        ->latest('last_interaction_at')->paginate((int) $perPage)->withQueryString();
 
         return view('leads.index', compact('leads'));
     }
@@ -25,9 +36,19 @@ class LeadController extends Controller
 
         $filename = 'leads-' . date('Y-m-d') . '.csv';
         
+        $search = $request->query('search');
         $leads = Lead::whereHas('persona', function ($query) {
             $query->where('user_id', Auth::id());
-        })->latest('last_interaction_at')->get();
+        })
+        ->when($search, function ($query, $search) {
+            return $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('phone', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('address', 'like', "%{$search}%");
+            });
+        })
+        ->latest('last_interaction_at')->get();
 
         $headers = [
             "Content-type"        => "text/csv",

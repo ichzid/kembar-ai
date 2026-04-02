@@ -19,70 +19,58 @@
             font-family: 'Playfair Display', serif;
         }
         
-        .luxury-gradient {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        .lime-gradient {
+            background: linear-gradient(135deg, #8cb400 0%, #ebf5c7 50%, #8cb400 100%);
         }
         
-        .gold-gradient {
-            background: linear-gradient(135deg, #d4af37 0%, #f4e5c3 50%, #d4af37 100%);
+        .lime-text {
+            color: #8cb400;
         }
         
-        .gold-text {
-            background: linear-gradient(135deg, #d4af37 0%, #f4e5c3 50%, #d4af37 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .text-\\[\\#8cb400\\] {
+            /* Fix for accidental regex replacement */
+            color: #8cb400;
         }
         
         .elegant-shadow {
-            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.08);
+            box-shadow: 0 10px 40px rgba(140, 180, 0, 0.08); /* changed to lime */
         }
         
         .card-luxury {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(140, 180, 0, 0.1); /* changed to lime */
         }
         
         .card-luxury:hover {
             transform: translateY(-12px);
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
-            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 60px rgba(140, 180, 0, 0.15); /* changed to lime */
+            border-color: rgba(140, 180, 0, 0.3); /* changed to lime */
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: #8cb400;
+            color: white;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-        }
-        
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn-primary:hover::before {
-            left: 100%;
+            border: none;
         }
         
         .btn-primary:hover {
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            background: #7a9d00;
+            box-shadow: 0 10px 30px rgba(140, 180, 0, 0.3);
             transform: translateY(-2px);
         }
         
         .btn-secondary {
-            border: 2px solid #1a1a1a;
+            border: 2px solid #8cb400;
+            color: #8cb400;
             transition: all 0.3s ease;
+            background: transparent;
         }
         
         .btn-secondary:hover {
-            background: #1a1a1a;
+            background: #8cb400;
             color: white;
             transform: translateY(-2px);
         }
@@ -99,11 +87,11 @@
         .decoration-line {
             width: 60px;
             height: 3px;
-            background: linear-gradient(90deg, #d4af37, transparent);
+            background: linear-gradient(90deg, #8cb400, transparent);
         }
         
         .shimmer {
-            background: linear-gradient(90deg, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.1) 50%, rgba(212, 175, 55, 0) 100%);
+            background: linear-gradient(90deg, rgba(140, 180, 0, 0) 0%, rgba(140, 180, 0, 0.1) 50%, rgba(140, 180, 0, 0) 100%);
             background-size: 200% 100%;
             animation: shimmer 3s infinite;
         }
@@ -124,7 +112,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            background: linear-gradient(90deg, transparent, #8cb400, transparent);
         }
     </style>
 </head>
@@ -135,7 +123,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center">
-                    <h1 class="text-3xl font-display font-bold text-gray-900">Kembar <span class="gold-text">AI</span></h1>
+                    <h1 class="text-3xl font-display font-bold text-gray-900">Kembar <span class="text-[#8cb400]">AI</span></h1>
                 </div>
                 <div class="hidden md:flex space-x-10">
                     <a href="#features" class="text-gray-700 hover:text-gray-900 font-medium transition">Fitur</a>
@@ -157,7 +145,7 @@
             <div class="text-center mb-12 fade-in">
                 <h2 class="text-6xl md:text-7xl font-display font-bold text-gray-900 mb-8 leading-tight">
                     Kloning Dirimu ke AI.<br/>
-                    <span class="gold-text">Biarkan Kembaranmu Hadir</span><br/>
+                    <span class="text-[#8cb400]">Biarkan Kembaranmu Hadir</span><br/>
                     Saat Kamu Tidak Bisa.
                 </h2>
                 <div class="decoration-line mx-auto mb-8"></div>
@@ -197,14 +185,14 @@
     <!-- Solution Section (Enhanced) -->
     <section class="py-28 bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden relative">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-40">
-            <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-yellow-100 blur-3xl filter opacity-30"></div>
+            <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-[#f4fadc] blur-3xl filter opacity-30"></div>
             <div class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-gray-100 blur-3xl filter opacity-30"></div>
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-20 fade-in">
                 <h3 class="text-5xl md:text-7xl font-display font-bold text-gray-900 mb-8 leading-tight">
-                    Inilah <span class="gold-text">Kembaran Digital</span> Kamu.
+                    Inilah <span class="text-[#8cb400]">Kembaran Digital</span> Kamu.
                 </h3>
                 <div class="decoration-line mx-auto mb-8"></div>
                 <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
@@ -218,11 +206,11 @@
                         <div class="flex items-start">
                             <div class="flex-shrink-0 mr-6">
                                 <div class="w-14 h-14 rounded-full bg-gray-900 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                                    <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                                    <svg class="w-6 h-6 text-[#8cb400]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                                 </div>
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-yellow-600 transition-colors">Memahami Cara Kamu Berpikir</h4>
+                                <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#7a9d00] transition-colors">Memahami Cara Kamu Berpikir</h4>
                                 <p class="text-gray-600">Bukan sekadar menjawab, tapi berpikir dengan logika dan nilai yang kamu miliki.</p>
                             </div>
                         </div>
@@ -232,11 +220,11 @@
                         <div class="flex items-start">
                             <div class="flex-shrink-0 mr-6">
                                 <div class="w-14 h-14 rounded-full bg-gray-900 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                                    <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                                    <svg class="w-6 h-6 text-[#8cb400]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
                                 </div>
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-yellow-600 transition-colors">Berbicara dengan Suara Personalmu</h4>
+                                <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#7a9d00] transition-colors">Berbicara dengan Suara Personalmu</h4>
                                 <p class="text-gray-600">Tone, gaya bahasa, dan sapaan khasmu tetap terjaga dalam setiap pesan.</p>
                             </div>
                         </div>
@@ -248,11 +236,11 @@
                         <div class="flex items-start">
                             <div class="flex-shrink-0 mr-6">
                                 <div class="w-14 h-14 rounded-full bg-gray-900 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                                    <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <svg class="w-6 h-6 text-[#8cb400]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 </div>
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-yellow-600 transition-colors">Tahu Kapan Harus Menjawab</h4>
+                                <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#7a9d00] transition-colors">Tahu Kapan Harus Menjawab</h4>
                                 <p class="text-gray-600">Cerdas memilah mana yang perlu dijawab, mana yang harus diteruskan, dan mana yang harus berhenti.</p>
                             </div>
                         </div>
@@ -262,11 +250,11 @@
                         <div class="flex items-start">
                             <div class="flex-shrink-0 mr-6">
                                 <div class="w-14 h-14 rounded-full bg-gray-900 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                                    <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                    <svg class="w-6 h-6 text-[#8cb400]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                                 </div>
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-yellow-600 transition-colors">Bekerja 24/7 Tanpa Merusak Reputasi</h4>
+                                <h4 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#7a9d00] transition-colors">Bekerja 24/7 Tanpa Merusak Reputasi</h4>
                                 <p class="text-gray-600">Melayani audiens kapan saja dengan standar keamanan brand yang ketat.</p>
                             </div>
                         </div>
@@ -278,7 +266,7 @@
                 <div class="inline-block p-1 rounded-full bg-gradient-to-r from-gray-200 to-gray-100">
                     <div class="bg-white rounded-full px-8 py-4">
                         <p class="text-xl font-display font-medium text-gray-800">
-                            Bukan untuk menggantikanmu. Tapi untuk <span class="gold-text font-bold">mewakilimu dengan cara yang bertanggung jawab</span>.
+                            Bukan untuk menggantikanmu. Tapi untuk <span class="text-[#8cb400] font-bold">mewakilimu dengan cara yang bertanggung jawab</span>.
                         </p>
                     </div>
                 </div>
@@ -293,7 +281,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
                 <h3 class="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6 leading-tight">
-                    Fitur Utama <span class="gold-text">Kembar AI</span>
+                    Fitur Utama <span class="text-[#8cb400]">Kembar AI</span>
                 </h3>
                 <div class="decoration-line mx-auto mb-8"></div>
                 <p class="text-xl text-gray-600">
@@ -440,7 +428,7 @@
                 <div class="inline-block p-1 rounded-full bg-gradient-to-r from-gray-200 to-gray-100">
                     <div class="bg-white rounded-full px-8 py-4">
                         <p class="text-xl font-display font-medium text-gray-800">
-                            Bukan sekadar AI yang pintar. Tapi <span class="gold-text font-bold">AI yang tahu batas</span>.
+                            Bukan sekadar AI yang pintar. Tapi <span class="text-[#8cb400] font-bold">AI yang tahu batas</span>.
                         </p>
                     </div>
                 </div>
@@ -453,7 +441,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
                 <h3 class="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6 leading-tight">
-                    Cara Kerja <span class="gold-text">Kembar AI</span>
+                    Cara Kerja <span class="text-[#8cb400]">Kembar AI</span>
                 </h3>
                 <div class="decoration-line mx-auto mb-8"></div>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -465,7 +453,7 @@
                 <!-- Step 1 -->
                 <div class="bg-gradient-to-br from-gray-50 to-white p-12 rounded-[2.5rem] elegant-shadow border border-gray-100">
                     <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full luxury-gradient flex items-center justify-center text-white text-2xl font-bold mr-4">1</div>
+                        <div class="w-16 h-16 rounded-full lime-gradient flex items-center justify-center text-white text-2xl font-bold mr-4">1</div>
                         <h4 class="text-3xl font-display font-bold text-gray-900">Bangun Kembaranmu</h4>
                     </div>
                     <p class="text-lg text-gray-700 mb-4">Latih AI dengan dua cara:</p>
@@ -487,7 +475,7 @@
                 <!-- Step 2 -->
                 <div class="bg-gradient-to-br from-gray-50 to-white p-12 rounded-[2.5rem] elegant-shadow border border-gray-100">
                     <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full luxury-gradient flex items-center justify-center text-white text-2xl font-bold mr-4">2</div>
+                        <div class="w-16 h-16 rounded-full lime-gradient flex items-center justify-center text-white text-2xl font-bold mr-4">2</div>
                         <h4 class="text-3xl font-display font-bold text-gray-900">Kembar AI Berbicara untukmu</h4>
                     </div>
                     <p class="text-gray-700 mb-4">
@@ -501,7 +489,7 @@
                 <!-- Step 3 -->
                 <div class="bg-gradient-to-br from-gray-50 to-white p-12 rounded-[2.5rem] elegant-shadow border border-gray-100">
                     <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full luxury-gradient flex items-center justify-center text-white text-2xl font-bold mr-4">3</div>
+                        <div class="w-16 h-16 rounded-full lime-gradient flex items-center justify-center text-white text-2xl font-bold mr-4">3</div>
                         <h4 class="text-3xl font-display font-bold text-gray-900">Data Ditangkap Secara Alami</h4>
                     </div>
                     <p class="text-gray-700 mb-4">Kembar AI mengenal audiens secara bertahap:</p>
@@ -527,7 +515,7 @@
                 <!-- Step 4 -->
                 <div class="bg-gradient-to-br from-gray-50 to-white p-12 rounded-[2.5rem] elegant-shadow border border-gray-100">
                     <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 rounded-full luxury-gradient flex items-center justify-center text-white text-2xl font-bold mr-4">4</div>
+                        <div class="w-16 h-16 rounded-full lime-gradient flex items-center justify-center text-white text-2xl font-bold mr-4">4</div>
                         <h4 class="text-3xl font-display font-bold text-gray-900">Keputusan Tetap di Tanganmu</h4>
                     </div>
                     <p class="text-gray-700 mb-4">
@@ -543,7 +531,7 @@
                 <div class="inline-block p-1 rounded-full bg-gradient-to-r from-gray-200 to-gray-100">
                     <div class="bg-white rounded-full px-8 py-4">
                         <p class="text-xl font-display font-medium text-gray-800">
-                            Kamu tetap menjadi pusat keputusan. <span class="gold-text font-bold">Kembar AI mengurus sisanya</span>.
+                            Kamu tetap menjadi pusat keputusan. <span class="text-[#8cb400] font-bold">Kembar AI mengurus sisanya</span>.
                         </p>
                     </div>
                 </div>
@@ -557,7 +545,7 @@
             <div class="text-center mb-20">
                 <h3 class="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6 leading-tight">
                     Pilih Skala yang Sesuai<br/>
-                    <span class="gold-text">dengan Audiensmu.</span>
+                    <span class="text-[#8cb400]">dengan Audiensmu.</span>
                 </h3>
                 <div class="decoration-line mx-auto mb-8"></div>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -736,7 +724,7 @@
                 <div class="inline-block p-1 rounded-full bg-gradient-to-r from-gray-200 to-gray-100">
                     <div class="bg-white rounded-full px-8 py-4">
                         <p class="text-xl font-display font-medium text-gray-800">
-                            Investasi kecil. <span class="gold-text font-bold">Ketenangan besar</span>.
+                            Investasi kecil. <span class="text-[#8cb400] font-bold">Ketenangan besar</span>.
                         </p>
                     </div>
                 </div>
@@ -898,7 +886,7 @@
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h3 class="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6 leading-tight">
                 Saat Kamu Offline,<br/>
-                <span class="gold-text">Kembaranmu Tetap Hadir.</span>
+                <span class="text-[#8cb400]">Kembaranmu Tetap Hadir.</span>
             </h3>
             <div class="decoration-line mx-auto mb-8"></div>
             <p class="text-xl text-gray-600 mb-12 leading-relaxed">
@@ -921,7 +909,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div>
                     <h4 class="text-white font-display font-bold text-2xl mb-6">
-                        Kembar <span class="gold-text">AI</span>
+                        Kembar <span class="text-[#8cb400]">AI</span>
                     </h4>
                     <p class="text-gray-400 leading-relaxed mb-6">
                         Digital Twin for Human-Centered Personal Brands

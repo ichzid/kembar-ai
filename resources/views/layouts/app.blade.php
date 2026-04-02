@@ -70,7 +70,7 @@
     </style>
     @stack('styles')
 </head>
-<body class="bg-gray-50">
+<body class="bg-white">
     
     <!-- Mobile Menu Overlay -->
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
@@ -90,6 +90,39 @@
 
         <!-- Footer -->
         @include('layouts.footer')
+    </div>
+
+    <!-- Logout Modal -->
+    <div id="logoutModal" class="fixed inset-0 z-[100] hidden">
+        <div class="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="document.getElementById('logoutModal').classList.add('hidden')"></div>
+        <div class="fixed inset-0 flex items-center justify-center p-4 pointer-events-none">
+            <div class="bg-white rounded-[20px] shadow-xl w-full max-w-sm overflow-hidden transform transition-all relative pointer-events-auto">
+                <!-- Close Button -->
+                <button type="button" onclick="document.getElementById('logoutModal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                
+                <div class="p-8 text-center flex flex-col items-center">
+                    <!-- Icon -->
+                    <div class="flex items-center justify-center w-14 h-14 rounded-full border-[3px] border-[#da291c] mb-5">
+                        <span class="text-[#da291c] text-3xl font-bold">!</span>
+                    </div>
+                    
+                    <h3 class="text-[18px] font-bold text-[#111827] mb-8">Apakah anda ingin keluar?</h3>
+                    
+                    <div class="flex items-center justify-center gap-3 w-full px-2">
+                        <button type="button" onclick="document.getElementById('logoutModal').classList.add('hidden')" class="px-5 py-2.5 rounded-lg border border-gray-200 text-gray-700 text-[14px] font-bold hover:bg-gray-50 transition-colors bg-white">
+                            Batal
+                        </button>
+                        <button type="button" onclick="document.getElementById('logoutForm').submit()" class="px-5 py-2.5 rounded-lg bg-[#6a8b00] hover:bg-[#5b7800] text-white text-[14px] font-bold transition-colors shadow-sm">
+                            Ya, Keluar!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>

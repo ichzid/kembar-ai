@@ -1,20 +1,20 @@
-<footer class="bg-white border-t border-gray-200 mt-auto">
-    <div class="px-4 md:px-8 py-6">
-        <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+<footer class="bg-white border-none mt-auto py-8">
+    <div class="px-4 md:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 text-[13px] text-gray-500 font-medium">
             <!-- Copyright -->
-            <div class="text-sm text-gray-600">
-                &copy; {{ date('Y') }} <span class="font-semibold">Kembar AI</span>. All rights reserved.
+            <div class="w-full md:w-1/3 text-left">
+                &copy; {{ date('Y') }} Kembar AI, All rights reserved
             </div>
             
             <!-- Links -->
-            <div class="flex items-center space-x-6 text-sm">
-                <a href="#" class="text-gray-600 hover:text-gray-900 transition">Privacy Policy</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900 transition">Terms of Service</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900 transition">Support</a>
+            <div class="w-full md:w-1/3 flex justify-center space-x-8">
+                <a href="#" class="hover:text-gray-900 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-900 transition-colors">Term of Use</a>
+                <a href="#" class="hover:text-gray-900 transition-colors">Support</a>
             </div>
             
             <!-- Version -->
-            <div class="text-sm text-gray-500">
+            <div class="w-full md:w-1/3 text-right">
                 Version 1.0.0
             </div>
         </div>

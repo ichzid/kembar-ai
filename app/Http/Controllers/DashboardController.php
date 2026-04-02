@@ -35,6 +35,8 @@ class DashboardController extends Controller
             $query->where('user_id', $user->id);
         })->where('status', 'needs_review')->count();
 
+        $limit = 100;
+        
         // MERGED ACTIVITY FEED (Chats, Leads, Decisions)
         // 1. New Chats
         $recentChats = ChatLog::whereHas('persona', function ($q) use ($user) {
@@ -43,7 +45,7 @@ class DashboardController extends Controller
             ->where('from_type', 'user')
             ->with(['persona', 'lead'])
             ->latest()
-            ->take(10)
+            ->take($limit)
             ->get()
             ->map(function ($item) {
                 $item->activity_type = 'chat_log';
@@ -56,7 +58,7 @@ class DashboardController extends Controller
             })
             ->with(['persona'])
             ->latest()
-            ->take(5)
+            ->take($limit)
             ->get()
             ->map(function ($item) {
                 $item->activity_type = 'new_lead';
@@ -69,7 +71,7 @@ class DashboardController extends Controller
             })
             ->with(['persona', 'lead'])
             ->latest()
-            ->take(5)
+            ->take($limit)
             ->get()
             ->map(function ($item) {
                 $item->activity_type = 'decision';
@@ -77,10 +79,22 @@ class DashboardController extends Controller
             });
 
         // Merge and Sort
-        $recentActivities = $recentChats->merge($recentNewLeads)
+        $allActivities = $recentChats->merge($recentNewLeads)
             ->merge($recentDecisions)
-            ->sortByDesc('created_at')
-            ->take(5);
+            ->sortByDesc('created_at');
+
+        // Pagination setup
+        $perPage = request()->input('per_page', 5);
+        $currentPage = \Illuminate\Pagination\Paginator::resolveCurrentPage() ?: 1;
+        $currentItems = $allActivities->slice(($currentPage - 1) * $perPage, $perPage)->values();
+
+        $recentActivities = new \Illuminate\Pagination\LengthAwarePaginator(
+            $currentItems, 
+            $allActivities->count(), 
+            $perPage, 
+            $currentPage, 
+            ['path' => \Illuminate\Pagination\Paginator::resolveCurrentPath(), 'query' => request()->query()]
+        );
 
         return view('dashboard.index', compact(
             'user', 
