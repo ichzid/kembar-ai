@@ -36,6 +36,9 @@ jobs:
             
             # Setup error handling
             set -euo pipefail
+
+            # Allow composer to run as root (required on some VPS setups)
+            export COMPOSER_ALLOW_SUPERUSER=1
             
             APP_DIR="${{ secrets.VPS_APP_DIR }}"
             REPO_URL="https://x-access-token:${{ github.token }}@github.com/ichzid/kembar-ai.git"
@@ -98,6 +101,9 @@ jobs:
 
             echo "Putting app into maintenance mode..."
             php artisan down --retry=60 || true
+
+            echo "Removing corrupted vendor directory (if any)..."
+            rm -rf vendor
 
             echo "Installing PHP dependencies..."
             composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress
