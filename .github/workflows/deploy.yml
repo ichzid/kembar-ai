@@ -38,8 +38,17 @@ jobs:
             set -euo pipefail
             
             APP_DIR="${{ secrets.VPS_APP_DIR }}"
-            # Use github.token as it is built-in and valid during the run
             REPO_URL="https://x-access-token:${{ github.token }}@github.com/ichzid/kembar-ai.git"
+
+            # ── Validate required secrets ─────────────────────────────────
+            if [ -z "$APP_DIR" ]; then
+                echo "ERROR: VPS_APP_DIR secret is empty or not set!"
+                echo "Please go to: GitHub Repo > Settings > Secrets and variables > Actions"
+                echo "And add secret: VPS_APP_DIR = /path/to/your/app (e.g. /www/wwwroot/kembar-ai)"
+                exit 1
+            fi
+
+            echo "APP_DIR is set to: $APP_DIR"
 
             echo "Ensuring application directory exists..."
             mkdir -p "$APP_DIR"
