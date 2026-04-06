@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,18 +11,14 @@ class DatabaseSeeder extends Seeder
 
     /**
      * Seed the application's database.
+     *
+     * Urutan seeder SANGAT PENTING:
+     * 1. ProgrammerPersonaSeeder → Membuat User & Persona utama
+     * 2. DummyDataSeeder         → Membuat Leads, Chat Logs, & Decision Inbox (berdasarkan Persona dari step 1)
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
         $this->call(ProgrammerPersonaSeeder::class);
         $this->call(DummyDataSeeder::class);
-        $this->call(DecisionInboxSeeder::class);
     }
 }
