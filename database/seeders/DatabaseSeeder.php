@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ProgrammerPersonaSeeder::class);
         $this->call(DummyDataSeeder::class);
+        $this->call(DecisionInboxSeeder::class);
     }
 }
