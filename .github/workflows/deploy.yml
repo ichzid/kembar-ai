@@ -41,24 +41,54 @@ jobs:
             # Use github.token as it is built-in and valid during the run
             REPO_URL="https://x-access-token:${{ github.token }}@github.com/ichzid/kembar-ai.git"
 
-            echo "Navigating to: $APP_DIR"
+            echo "Ensuring application directory exists..."
+            mkdir -p "$APP_DIR"
             cd "$APP_DIR"
 
             echo "Setting git safe directory..."
             git config --global --add safe.directory "$APP_DIR"
+
+            echo "Checking if directory is a git repository..."
+            if [ ! -d ".git" ]; then
+                echo "Directory is not a git repository. Initializing clone..."
+                # Move to parent directory and clone into APP_DIR
+                cd ..
+                # Remove APP_DIR if it exists and is empty or not git to avoid clone errors
+                # But be careful not to delete files if there are any.
+                # Just clone into a temporary and move if needed, OR just clone if empty.
+                if [ -z "$(ls -A "$APP_DIR")" ]; then
+                    rmdir "$APP_DIR"
+                    git clone "$REPO_URL" "$APP_DIR"
+                    cd "$APP_DIR"
+                else
+                    echo "Directory is not empty. Attempting to initialize git..."
+                    cd "$APP_DIR"
+                    git init
+                    git remote add origin "$REPO_URL"
+                    git fetch origin main
+                    git checkout -f main
+                fi
+            else
+                echo "Git repository found. Syncing with remote..."
+                git fetch "$REPO_URL" main
+                git reset --hard FETCH_HEAD
+                git clean -fd
+            fi
 
             echo "Checking environment..."
             php -v
             composer --version
             npm -v
 
+            echo "Checking for artisan file..."
+            if [ ! -f "artisan" ]; then
+                echo "Error: artisan file not found in $APP_DIR"
+                ls -la
+                exit 1
+            fi
+
             echo "Putting app into maintenance mode..."
             php artisan down --retry=60 || true
-
-            echo "Pulling latest code from main branch..."
-            git fetch "$REPO_URL" main
-            git reset --hard FETCH_HEAD
-            git clean -fd
 
             echo "Installing PHP dependencies..."
             composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress
